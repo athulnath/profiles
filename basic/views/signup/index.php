@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use kartik\date\DatePicker;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -8,9 +10,9 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Signup';
 ?>
+
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
-
     <p>Please fill out the following fields to signup:</p>
 
     <div class="row">
@@ -21,8 +23,17 @@ $this->title = 'Signup';
                 <?= $form->field($model, 'firstName') ?>
                 <?= $form->field($model, 'middleName') ?>
                 <?= $form->field($model, 'lastName') ?>
-                <?= $form->field($model, 'gender') ?>
-                <?= $form->field($model, 'dob') ?>
+                <?= $form->field($model, 'gender')->dropDownList(['male'=>'male', 'female' => 'female']);?>
+
+ <?= 
+$form->field($model, 'dob')->widget(DatePicker::classname(), [
+	'options' => ['placeholder' => 'Enter event time ...'],
+	'pluginOptions' => [
+		'autoclose' => true
+	]
+]);
+ ?>
+ <br>
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
