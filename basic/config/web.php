@@ -3,7 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'myprofile',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
@@ -38,6 +38,9 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'mytime' => function(){
+        	return time();
+        }
     ],
     'params' => $params,
 ];
@@ -48,7 +51,10 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = 'yii\debug\Module';
 
     $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = 'yii\gii\Module';
+    $config['modules']['gii'] = [
+		'class' => 'yii\gii\Module',
+		'allowedIPs' => ['127.0.0.1']
+    ];
 }
 
 return $config;

@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\EntryForm;
 
 class SiteController extends Controller
 {
@@ -37,6 +38,7 @@ class SiteController extends Controller
     public function actions()
     {
         return [
+        	'helloworld' => 'app\components\Helloworld',
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
@@ -93,4 +95,24 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    
+ 	public function actionSay($message = 'Hello')
+ 	{
+ 		return $this->render('say', ['message' => $message . " " . Yii::$app->params['adminEmail']. Yii::$app->mytime]);
+ 	}   
+ 	
+ 	public function actionEntry()
+ 	{
+ 		$entryModel =  new EntryForm();
+ 		
+ 		if($entryModel->load(Yii::$app->request->post()) && $entryModel->validate())
+ 		{
+ 			return $this->render('entry-confirm', ['model' => $entryModel]);
+ 		}
+ 		else
+ 		{
+ 			return $this->render('entry', ['model' => $entryModel]);
+ 		}
+ 	}
+    
 }
