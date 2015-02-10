@@ -1,6 +1,7 @@
 <?php
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use app\models\activeRecords\User;
 use yii\db\Expression;
@@ -20,7 +21,8 @@ class SignupForm extends Model
     {
     	return [
 			['email', 'email'],
-			[['email', 'password', 'firstName', 'lastName', 'dob'], 'required']
+			[['middleName'], 'string'],
+			[['email', 'password', 'firstName','lastName','gender', 'dob'], 'required']
     	];
     }
     

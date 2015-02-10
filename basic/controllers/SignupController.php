@@ -15,6 +15,7 @@ class SignupController extends Controller
 		if($signupForm->load(Yii::$app->request->post()))
 		{
 			$signupForm->registerData();
+			
 		}
 		
 		return $this->render('index', ['model' => $signupForm]);
