@@ -3,6 +3,8 @@
 namespace app\models\activeRecords;
 
 use Yii;
+use yii\web\IdentityInterface;
+use yii\base\Security;
 
 /**
  * This is the model class for table "user".
@@ -21,8 +23,8 @@ use Yii;
  * @property ProfileFriends[] $profileFriends
  * @property Profiles[] $profiles
  */
-class User extends \yii\db\ActiveRecord
-{
+class User extends \yii\db\ActiveRecord implements IdentityInterface
+{	
     /**
      * @inheritdoc
      */
@@ -79,4 +81,49 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Profiles::className(), ['user_id' => 'user_id']);
     }
+    
+    /**
+     * Finds user by email
+     *
+     * @param  string $email
+     * @return static|null
+     */
+    public static function findByEmail($email)
+    {
+    	return static::findOne(['email' => $email]);
+    }
+    
+    
+    public static function findIdentity($id) 
+    {
+    	return static ::findOne($id);	
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null) 
+    {
+    	
+    }
+
+    public function getId()
+    {
+    	return $this->getPrimaryKey();
+    	
+    }
+
+    public function getAuthKey()
+    {
+    	return $this->auth_key;
+    }
+    
+    public function validateAuthKey($authKey)
+    {
+    	return $this->authKey === $authKey;
+    }
+    
+    public function validatePassword($password)
+    {
+    	return $this->password === md5($password);
+    }
+    
+    
 }

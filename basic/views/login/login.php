@@ -33,25 +33,29 @@ $this->params['breadcrumbs'][] = $this->title;
 								</div>
 								<div class="row">
 									<div class="col-sm-12 col-md-10  col-md-offset-1 ">
-									
-									
-										
-										
-												<?= $form->field($model, 'username',  ['template' => '
+
+								   <?= $form->field($model, 'email',  ['template' => '
 											<div class="input-group">
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-user"></i>
 												</span> 
-												<input class="form-control" placeholder="Username" name="loginname" type="text" autofocus>
-											</div>'])->textInput(['placeholder' => "UserName"]) ?>
+												{input}
+											</div>
+											<div>
+													{error}
+											</div>
+												'])->textInput(['placeholder' => 'Email']) ?>
 
 									<?= $form->field($model, 'password',  ['template' => '
 											<div class="input-group">
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-lock"></i>
 												</span> 
-												<input class="form-control" placeholder="Username" name="loginname" type="text" autofocus>
-											</div>'])->passwordInput()->textInput(['placeholder' => "UserName"]) ?>
+												{input}
+											</div>
+											<div>
+													{error}
+											</div>'])->passwordInput(['placeholder' => 'Password']) ?>
 										
 										<div class="form-group">
 											<?= Html::submitButton('Login', ['class' => 'btn btn-lg btn-primary btn-block', 'name' => 'login-button']) ?>
