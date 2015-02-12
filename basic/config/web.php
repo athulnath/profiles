@@ -1,6 +1,5 @@
 <?php
-
-$params = require(__DIR__ . '/params.php');
+$params = require (__DIR__ . '/params.php');
 
 $config = [
     'id' => 'myprofile',
@@ -22,11 +21,17 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+        	'class' => 'yii\swiftmailer\Mailer',
+        	'useFileTransport' => false,//set this property to false to send mails to real email addresses
+        //comment the following array to send mail using php's mail function
+        	'transport' => [
+        			'class' => 'Swift_SmtpTransport',
+            		'host' => 'smtp.gmail.com',
+                    'username' => 'testmyapps321@gmail.com',
+            		'password' => 'changesudome',
+                    'port' => '587',
+                    'encryption' => 'tls',
+                    ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -43,18 +48,21 @@ $config = [
         }
     ],
     'params' => $params,
-];
+]
+;
 
 if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = 'yii\debug\Module';
-
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-		'class' => 'yii\gii\Module',
-		'allowedIPs' => ['127.0.0.1']
-    ];
+	// configuration adjustments for 'dev' environment
+	$config ['bootstrap'] [] = 'debug';
+	$config ['modules'] ['debug'] = 'yii\debug\Module';
+	
+	$config ['bootstrap'] [] = 'gii';
+	$config ['modules'] ['gii'] = [ 
+			'class' => 'yii\gii\Module',
+			'allowedIPs' => [ 
+					'127.0.0.1' 
+			] 
+	];
 }
 
 return $config;

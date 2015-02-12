@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -66,7 +67,8 @@ $this->params['breadcrumbs'][] = $this->title;
 						<?php ActiveForm::end(); ?>
 					</div>
 					<div class="panel-footer ">
-						Don't have an account! <a href="#" onClick=""> Sign Up Here </a>
+						Don't have an account! <a href="<?= Url::toRoute('/signup')?>" onClick=""> Sign Up Here </a>
+						<div style="font-size: 80%; position: relative;"><a href="#">Forgot password?</a></div>
 					</div>
                 </div>
 			</div>

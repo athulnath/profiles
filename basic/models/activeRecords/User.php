@@ -24,7 +24,10 @@ use yii\base\Security;
  * @property Profiles[] $profiles
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
-{	
+{
+		
+	public $username; //temporary
+	
     /**
      * @inheritdoc
      */
