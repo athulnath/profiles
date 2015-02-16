@@ -10,7 +10,7 @@ use yii\helpers\Url;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
+<br><br>
 	<div class="row">
 			<div class="col-sm-6 col-md-4 col-md-offset-4">
 				<div class="panel panel-default">
@@ -26,12 +26,12 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 							<fieldset>
-								<div class="row">
-									<div class="center-block">
-										<img class="profile-img"
-											src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">
-									</div>
-								</div>
+<!-- 								<div class="row"> -->
+<!-- 									<div class="center-block"> -->
+<!-- 										<img class="profile-img" -->
+<!-- 											src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt=""> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
 								<div class="row">
 									<div class="col-sm-12 col-md-10  col-md-offset-1 ">
 
@@ -61,11 +61,17 @@ $this->params['breadcrumbs'][] = $this->title;
 										<div class="form-group">
 											<?= Html::submitButton('Login', ['class' => 'btn btn-lg btn-primary btn-block', 'name' => 'login-button']) ?>
 										</div>
+										
+										<div class="form-group">
+											<?= Html::button('Sign in with facebook', ['class' => 'btn btn-lg btn-success btn-block', 'name' => 'login-button']) ?>
+										</div>
+										
 									</div>
 								</div>
 							</fieldset>
 						<?php ActiveForm::end(); ?>
 					</div>
+					
 					<div class="panel-footer ">
 						Don't have an account! <a href="<?= Url::toRoute('/signup')?>" onClick=""> Sign Up Here </a>
 						<div style="font-size: 80%; position: relative;"><a href="#">Forgot password?</a></div>

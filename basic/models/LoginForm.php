@@ -73,7 +73,13 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByEmail($this->email);
+        	$this->_user = User::findByEmail($this->email);
+        	
+        	if(isset($this->_user["activated"]) && $this->_user["activated"] != 1)
+        	{
+        		$this->addError("password", "This account is not verified. Please check your inbox");
+        	}
+        		
         }
 
         return $this->_user;

@@ -4,6 +4,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\SignupForm;
+use yii\web\NotFoundHttpException;
+use yii\web\BadRequestHttpException;
 
 class SignupController extends Controller
 {
@@ -14,8 +16,15 @@ class SignupController extends Controller
 		$signupForm = new SignupForm();
 		if($signupForm->load(Yii::$app->request->post()))
 		{
-			$signupForm->registerData();
-			return $this->render("verificationMessage", ['email' => $signupForm->email]);
+			if(!$signupForm->isUserExist($signupForm->email))
+			{
+				$signupForm->registerData();
+				return $this->render("verificationMessage", ['email' => $signupForm->email]);
+			}
+			else
+			{
+				return $this->render("alreadySignedup", ['email' => $signupForm->email]);
+			}
 		}
 		
 		return $this->render('index', ['model' => $signupForm]);
@@ -30,7 +39,7 @@ class SignupController extends Controller
 		}
 		else 
 		{
-			//error
+			throw new BadRequestHttpException();
 		}
 	}
 	

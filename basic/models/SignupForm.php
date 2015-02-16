@@ -11,6 +11,7 @@ class SignupForm extends Model
 {
     public $email;
     public $password;
+    public $password_repeat;
     public $firstName;
     public $middleName;
     public $lastName;
@@ -23,7 +24,8 @@ class SignupForm extends Model
     	return [
 			['email', 'email'],
 			[['middleName'], 'string'],
-			[['email', 'password', 'firstName','lastName','gender', 'dob'], 'required']
+			[['email', 'password', 'firstName','lastName','gender', 'dob'], 'required'],
+			['password_repeat', 'compare', 'compareAttribute' => 'password']
     	];
     }
     
@@ -95,5 +97,11 @@ class SignupForm extends Model
     	
     	return false;
     	
+    }
+    
+    public function isUserExist($email)
+    {
+    	$userData = User::findByEmail($email);
+    	return $userData !== NULL;
     }
 }

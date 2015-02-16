@@ -20,13 +20,14 @@ $this->title = 'Signup';
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
                 <?= $form->field($model, 'email') ?>
                 <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'password_repeat')->passwordInput() ?>
                 <?= $form->field($model, 'firstName') ?>
                 <?= $form->field($model, 'middleName') ?>
                 <?= $form->field($model, 'lastName') ?>
                 <?= $form->field($model, 'gender')->dropDownList(['male'=>'male', 'female' => 'female']);?>
 
  <?= 
-$form->field($model, 'dob')->widget(DatePicker::classname(), [
+$form->field($model, 'dob')->label("Date Of Birth")->widget(DatePicker::classname(), [
 	'options' => ['placeholder' => 'Enter event time ...'],
 	'pluginOptions' => [
 		'autoclose' => true
