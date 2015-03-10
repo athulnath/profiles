@@ -19,11 +19,11 @@ AppAsset::register($this);
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
-<?php $this->head() ?>
+        <?php $this->head() ?>
     </head>
     <body>
 
-            <?php $this->beginBody() ?>
+        <?php $this->beginBody() ?>
         <div class="wrap">
             <?php
             NavBar::begin([
@@ -33,21 +33,21 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
-            
+
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'encodeLabels' => false,
                 'items' => [
                     [
                         'label' => '<span class="glyphicon glyphicon-cog"></span> '
-                    . Html::encode('Settings'),
+                        . Html::encode('Settings'),
                         'items' => [
                             ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
                             '<li class="divider"></li>',
                             '<li class="dropdown-header">Dropdown Header</li>',
                             ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
                         ],
-                    ],  
+                    ],
                     Yii::$app->user->isGuest ?
                             ['label' => '<span class="glyphicon glyphicon-user"></span> Login', 'url' => ['/site/login']] :
                             ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
@@ -59,34 +59,62 @@ AppAsset::register($this);
             NavBar::end();
             ?>
 
-<!--            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                             /input-group 
-                        </li>
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        
-                                                <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                    </ul>
-                </div>
-                 /.sidebar-collapse 
-            </div>-->
-            
             <div class="container">
-                        <?= $content ?>
+                <div class="row">
+                    <div class="col-md-2">
+                        
+                        <div class="profile-img">
+                            <?php echo Html::img('@web/images/prof.gif', ['alt' => 'profile-image', 'width' => '125px', 'height' => '125px']); ?>    
+                        </div>
+                        
+                        
+                        <div class="sidebar-nav">
+                            <div class="well">
+                                <ul class="nav ">
+                                    <li class="nav-header">Sidebar</li>
+                                    <li class="active"><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li class="nav-header">Sidebar</li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li class="nav-header">Sidebar</li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                    <li><a href="#">Link</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--/.well -->
+                        </div>
+                        <!--/sidebar-nav-fixed -->
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-8">
+                        <?php echo  $content ?>
+                    </div>
+                    <!--/span-->
+                    <!--/span-->
+                </div>
+                <!--/row-->
+
             </div>
         </div>
 
@@ -96,7 +124,7 @@ AppAsset::register($this);
             </div>
         </footer>
 
-<?php $this->endBody() ?>
+        <?php $this->endBody() ?>
     </body>
 </html>
 <?php $this->endPage() ?>
