@@ -18,10 +18,9 @@ echo PostViewWidget::widget(['message' => 'heavvvvy', 'header' => 'hey!!!']);
 
     <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            Action <span class="caret"></span>
+            Profile A <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Profile A</a></li>
             <li><a href="#">Profile B</a></li>
             <li><a href="#">Profile C</a></li>
             <li><a href="#">Profile D</a></li>
@@ -43,5 +42,23 @@ echo PostViewWidget::widget(['message' => 'heavvvvy', 'header' => 'hey!!!']);
 
 
 </div>
+
+<div class="row">
+    <div class="col-md-6 pull-left">
+        <?php
+            echo PostViewWidget::widget(['message' => 'heavvvvy', 'header' => 'hey!!!']);
+        ?>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 pull-right">
+        <?php
+            echo PostViewWidget::widget(['message' => 'heavvvvy', 'header' => 'hey!!!']);
+        ?>
+    </div>
+</div>
+
+
 
 
